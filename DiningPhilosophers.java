@@ -20,19 +20,19 @@ import javax.swing.JLabel;
 public class DiningPhilosophers {
 	//class attributes
 	private JFrame frame;// frame for the GUI
-	
+
 	//Number of philosophers
 	static final int NUM_PHILOSOPHERS = 5;
-	
+
 	//Creating an array of philosophers
 	Philosopher[] philosophers = new Philosopher[NUM_PHILOSOPHERS];
-	
-	//creating semaphore permission to control which philosopher can pickup forks and eat 
+
+	//creating semaphore permission to control which philosopher can pickup forks and eat
 	static Semaphore permissions = new Semaphore(2);
-	
+
 	//creating a boolean array to check the status of philosophers
 	static boolean [] philIsEating = {false, false, false, false, false};
-	
+
 	//creating labels and arrays of labels for the GUI
 	JLabel[] PhilsLables = new JLabel[5];
 	JLabel[] forksLables = new JLabel[5];
@@ -59,7 +59,7 @@ public class DiningPhilosophers {
 	private JLabel meal_3;
 	private JLabel meal_4;
 	//creating arrays of imageIcons for forks and philosophers
-	ImageIcon plateIcon = new ImageIcon(getClass().getResource("plate.png"));
+	ImageIcon plateIcon = new ImageIcon("img/plate.png");
 	static ImageIcon []philThinkingIcons = new ImageIcon[5];
 	static ImageIcon []philEatingIcons = new ImageIcon[5];
 	static ImageIcon []forkAvailableIcons = new ImageIcon[5];
@@ -97,7 +97,7 @@ public class DiningPhilosophers {
 		frame.setBounds(0, 0,900, 900);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		//Creating a start button that calls the start method to start the application
 		Button start = new Button("Start");
 		start.setBounds(356,639 , 77, 22);
@@ -110,21 +110,21 @@ public class DiningPhilosophers {
 		});
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(start);
-		
+
 		//filling the ImageIcon arrays with the images of the philosophers and forks
 		for(int i = 0; i < philThinkingIcons.length; i++){
-			philThinkingIcons[i]= new ImageIcon(getClass().getResource("phil_"+i+"_thinking.png"));
-			philEatingIcons[i]= new ImageIcon(getClass().getResource("phil_"+i+"_eating.png"));
-			forkAvailableIcons[i]= new ImageIcon(getClass().getResource("fork_"+i+"_available.png"));
-			forkUsedIcons[i]= new ImageIcon(getClass().getResource("fork_"+i+"_used.png"));
+			philThinkingIcons[i]= new ImageIcon("img/phil_"+i+"_thinking.png");
+			philEatingIcons[i]= new ImageIcon("img/phil_"+i+"_eating.png");
+			forkAvailableIcons[i]= new ImageIcon("img/fork_"+i+"_available.png");
+			forkUsedIcons[i]= new ImageIcon("img/fork_"+i+"_used.png");
 		}
-		
-		//setting up dimensions names and coordinates for each label and adding it to the frame of the GUI 
+
+		//setting up dimensions names and coordinates for each label and adding it to the frame of the GUI
 		JLabel plateLable = new JLabel("Midle Plate");
 		plateLable.setBounds(220, 170, 336, 333);
 		plateLable.setIcon(plateIcon);
 		frame.getContentPane().add(plateLable);
-		
+
 		philLable_0 = new JLabel("Philosopher 0");
 		philLable_0.setBounds(344, 50, 89, 110);
 		philLable_0.setIcon(philThinkingIcons[0]);
@@ -139,12 +139,12 @@ public class DiningPhilosophers {
 		philLable_2.setBounds(523, 420, 100, 110);
 		philLable_2.setIcon(philThinkingIcons[2]);
 		frame.getContentPane().add(philLable_2);
-		
+
 		philLable_3 = new JLabel("Philosopher 3");
 		philLable_3.setBounds(162, 434, 100, 110);
 		philLable_3.setIcon(philThinkingIcons[3]);
 		frame.getContentPane().add(philLable_3);
-		
+
 		philLable_4 = new JLabel("Philosopher 4");
 		philLable_4.setBounds(134, 165, 100, 110);
 		philLable_4.setIcon(philThinkingIcons[4]);
@@ -175,47 +175,47 @@ public class DiningPhilosophers {
 		forkLable_4.setBounds(99, 298, 111, 96);
 		forkLable_4.setIcon(forkAvailableIcons[4]);
 		frame.getContentPane().add(forkLable_4);
-		
+
 		lblNewLabel_0 = new JLabel("Philosopher# 0");
 		lblNewLabel_0.setBounds(344, 8, 169, 14);
 		frame.getContentPane().add(lblNewLabel_0);
-		
+
 		lblNewLabel_1 = new JLabel("Philosopher# 1");
 		lblNewLabel_1.setBounds(658, 213, 169, 14);
 		frame.getContentPane().add(lblNewLabel_1);
-		
+
 		lblNewLabel_2 = new JLabel("Philosopher# 2");
 		lblNewLabel_2.setBounds(632, 489, 169, 14);
 		frame.getContentPane().add(lblNewLabel_2);
-		
+
 		lblNewLabel_3 = new JLabel("Philosopher# 3");
 		lblNewLabel_3.setBounds(0, 482, 169, 14);
 		frame.getContentPane().add(lblNewLabel_3);
-		
+
 		lblNewLabel_4 = new JLabel("Philosopher# 4");
 		lblNewLabel_4.setBounds(0, 213, 169, 14);
 		frame.getContentPane().add(lblNewLabel_4);
-		
+
 		meal_0 = new JLabel("Meal #");
 		meal_0.setBounds(344, 25, 80, 14);
 		frame.getContentPane().add(meal_0);
-		
+
 		meal_1 = new JLabel("Meal #");
 		meal_1.setBounds(658, 238, 80, 14);
 		frame.getContentPane().add(meal_1);
-		
+
 		meal_2 = new JLabel("Meal #");
 		meal_2.setBounds(633, 514, 80, 14);
 		frame.getContentPane().add(meal_2);
-		
+
 		meal_3 = new JLabel("Meal #");
 		meal_3.setBounds(0, 501, 80, 14);
 		frame.getContentPane().add(meal_3);
-		
+
 		meal_4 = new JLabel("Meal #");
 		meal_4.setBounds(0, 238, 80, 14);
 		frame.getContentPane().add(meal_4);
-		
+
 		// adding all the labels to Arrays of labels for easy access
 		PhilsLables[0] = philLable_0;
 		PhilsLables[1] = philLable_1;
@@ -238,10 +238,10 @@ public class DiningPhilosophers {
 		meals[3] = meal_3;
 		meals[4] = meal_4;
 	}
-	
+
 	//start method that gets called when the start button is pressed
-	public void start() {		
-		
+	public void start() {
+
 		//Creating an array of forks
 		Fork[] forks = new Fork[NUM_PHILOSOPHERS];
 
@@ -258,7 +258,7 @@ public class DiningPhilosophers {
 			new Thread(philosophers[i]).start();
 		}
 	}
-	
+
 	//The Test method: it checks the status of the left neighbor Philosopher
 	public synchronized static boolean leftNeighbourPhilosopher(int id) {
 		return DiningPhilosophers.philIsEating[(id + 1)
